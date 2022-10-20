@@ -1,4 +1,4 @@
-/wwwroot.dest/*.*
+/dest/*.*
 !.gitkeep
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,node,visualstudio,visualstudiocode

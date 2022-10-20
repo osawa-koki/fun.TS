@@ -1,0 +1,8 @@
+{
+  "name": "fun.TS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/osawa-koki/fun.TS.git",
+  "author": "osawa-koki <osawa-koki@github.com>",
+  "license": "Apache 2.0"
+}

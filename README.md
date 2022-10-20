@@ -113,3 +113,26 @@ mixupMesh
 removeClassifiedItems
 
 ```
+
+## 環境構築手順
+
+```shell
+npm install -y yarn
+
+mkdir ★★★
+cd ★★★
+
+yarn init -y
+
+npm install --save-dev typescript @types/node
+npx tsc --init
+
+npm install eslint --save-dev
+npx eslint --init
+
+# コンパイル
+npx tsc
+
+# 常時コンパイル
+tsc --watch
+```

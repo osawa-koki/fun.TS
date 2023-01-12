@@ -1,9 +1,7 @@
 
 const mailRegex = `^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$`;
-
 const NAMESPACE_OF_SVG = "http://www.w3.org/2000/svg";
 const SPACE = " ";
-
 
 const eq = (a: any, b: any): boolean => a === b;
 const ne = (a: any, b: any): boolean => a !== b;
@@ -62,16 +60,14 @@ const regexGrouping = (a: string, b: string): {[key: string]: string} | undefine
 
 const removeChildren = (parent: HTMLElement): any[] => (parent.firstChild) ? [parent.removeChild(parent.firstChild), removeChildren(parent)] : [];
 
-const append = ([a, ...b]: HTMLElement[], parent: HTMLElement): any[] => (a !== undefined) ? [parent.appendChild(a), ...append(b, parent)] : [];
+const append = ([a, ...b]: (HTMLElement | Text)[], parent: HTMLElement): any[] => (a !== undefined) ? [parent.appendChild(a), ...append(b, parent)] : [];
 const mkBr = (): HTMLElement => document.createElement("br");
-// const appendText = ([a, ...b]: string[], parent: HTMLElement): any[] => (a !== undefined && 1 <= b.length) ? [append([document.createTextNode(a), mkBr()], parent), appendText(b, parent)] : (b.length === 0) ? append([document.createTextNode(a)], parent) : [];
+const appendText = ([a, ...b]: string[], parent: HTMLElement): any[] => (a !== undefined && 1 <= b.length) ? [append([document.createTextNode(a), mkBr()], parent), appendText(b, parent)] : (b.length === 0) ? append([document.createTextNode(a)], parent) : [];
 const push = ([a, ...b]: any[], list: any[]): any[] => (a !== undefined) ? [...push(b, list), list.push(a)] : [];
 
 const doNtimes = (n: number, fx: (arg: any) => any, i: number = 0): any[] => (i < n) ? [fx(i), ...doNtimes(n, fx, i + 1)] : [];
 
 const random = (a: number, b: number): number => Math.floor(Math.random() * (b + 1 - a) + a);
-const round = (n: number) => (i: number): number => Math.round(i * n) / n;
-const round100 = round(100);
 
 const NxN = (a: number, b: number, c: any = null): any[][] => [new Array(a).fill(new Array(b).fill(c))];
 const NxNfx = (a: number, b: number, fx: () => any): any[][] => [new Array(a).fill(new Array(b).fill(fx()))];
